@@ -41,18 +41,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    expose:
-      - 5432
+    # expose:
+    #   - 5432
     #    ports:
     #      - "5432:5432"
 
   flowback-redis:
     image: redis:5
     restart: unless-stopped
-    expose:
-      - "6379:6379"
-  #    ports:
-  #      - "6379:6379"
+    # expose:
+    #   - "6379:6379"
+    #    ports:
+    #      - "6379:6379"
 
   flowback-celery-worker:
     restart: unless-stopped
