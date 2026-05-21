@@ -12,7 +12,6 @@ services:
 
   flowback-backend:
     image: kattenelvis1/flowback-backend:latest
-
     command: bash -c "python manage.py migrate && python manage.py runserver
       0.0.0.0:8000"
     restart: unless-stopped
@@ -28,6 +27,7 @@ services:
       FLOWBACK_PSQL_HOST: ${POSTGRES_HOST:-flowback-postgresql}
       FLOWBACK_PSQL_PORT: ${POSTGRES_PORT:-5432}
       FLOWBACK_REDIS_HOST: ${REDIS_HOST:-flowback-redis}
+      URL_SUBPATH: api
     deploy:
       replicas: 4
 
