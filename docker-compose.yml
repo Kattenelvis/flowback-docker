@@ -39,7 +39,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-U", "${POSTGRES_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-flowback}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -55,7 +55,7 @@ services:
   flowback-celery-worker:
     restart: unless-stopped
     image: kattenelvis1/flowback-backend:latest
-    command: celery -A settings worker --loglevel=info
+    command: celery -A backend worker --loglevel=info
     depends_on:
       - flowback-redis
     volumes:
@@ -71,7 +71,7 @@ services:
   flowback-celery-beat:
     image: kattenelvis1/flowback-backend:latest
     restart: unless-stopped
-    command: celery -A settings beat --loglevel=info
+    command: celery -A backend beat --loglevel=info
     depends_on:
       - flowback-redis
     volumes:
