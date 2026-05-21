@@ -11,12 +11,11 @@ services:
   flowback-backend:
     image: kattenelvis1/flowback-backend:latest
 
-    command: >
-      python manage.py migrate && python manage.py runserver
-      0.0.0.0:${PORT:-8000}"
+    command: bash -c "python manage.py migrate && python manage.py runserver
+      0.0.0.0:8000"
     restart: unless-stopped
-    ports:
-      - ${PORT:-8005}:${PORT:-8000}
+    expose:
+      - 8000
     depends_on:
       flowback-postgresql:
         condition: service_healthy
