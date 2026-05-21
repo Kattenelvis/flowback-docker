@@ -1,9 +1,14 @@
 immr.flowback.org {
 
-    reverse_proxy /api*    app:8005 {
-      lb_policy round_robin
+    reverse_proxy /api*    flowback-backend:8005 {
+        lb_policy round_robin
       }
-    reverse_proxy /admin*  app:8005
-    reverse_proxy /openid* app:3000
-    reverse_proxy          app:3000
+
+    reverse_proxy /admin*  flowback-backend:8005
+
+    reverse_proxy /openid* flowback-frontend:3000
+
+    reverse_proxy          flowback-frontend:3000 {
+        lb_policy round_robin
+      }
 }

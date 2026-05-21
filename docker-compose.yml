@@ -13,8 +13,6 @@ services:
     restart: unless-stopped
     ports:
       - ${PORT:-8005}:${PORT:-8000}
-    volumes:
-      - .:/app
     depends_on:
       flowback-postgresql:
         condition: service_healthy
