@@ -1,9 +1,9 @@
 :80 {
-    reverse_proxy /api* flowback-backend:8000 {
+    reverse_proxy /api/* flowback-backend:8000 {
         lb_policy round_robin
     }
 
-    reverse_proxy /admin* flowback-backend:8000 {
+    reverse_proxy /admin/* flowback-backend:8000 {
         lb_policy round_robin
     }
 
