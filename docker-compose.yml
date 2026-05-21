@@ -11,9 +11,6 @@ services:
   flowback-backend:
     image: kattenelvis1/flowback-backend:latest
     restart: unless-stopped
-    command: >
-      bash -c "pip install --no-cache-dir -r requirements.txt && python
-      manage.py migrate && python manage.py runserver 0.0.0.0:${PORT:-8000}"
     ports:
       - ${PORT:-8000}:${PORT:-8000}
     volumes:
