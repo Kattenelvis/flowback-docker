@@ -1,6 +1,6 @@
 services:
   flowback-frontend:
-    image: flowback-frontend:latest
+    image: kattenelvis1/flowback-frontend:latest
     deploy:
       replicas: 4
 
@@ -29,7 +29,7 @@ services:
   #      - "6379:6379"
 
   flowback-backend:
-    image: flowback-backend:latest
+    image: kattenelvis1/flowback-backend:latest
     restart: unless-stopped
     command: >
       bash -c "pip install --no-cache-dir -r requirements.txt && python
@@ -53,9 +53,8 @@ services:
 
   flowback-celery-worker:
     restart: unless-stopped
-    image: flowback-backend:latest
+    image: kattenelvis1/flowback-backend:latest
     depends_on:
-      - flowback-backend
       - flowback-redis
     volumes:
       - .:/app # For persisting periodic task metadata
@@ -68,10 +67,9 @@ services:
       FLOWBACK_REDIS_HOST: ${REDIS_HOST:-flowback-redis}
 
   flowback-celery-beat:
-    image: flowback-backend:latest
+    image: kattenelvis1/flowback-backend:latest
     restart: unless-stopped
     depends_on:
-      - flowback-backend
       - flowback-redis
     volumes:
       - .:/app # For persisting periodic task metadata
