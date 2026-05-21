@@ -55,6 +55,7 @@ services:
   flowback-celery-worker:
     restart: unless-stopped
     image: kattenelvis1/flowback-backend:latest
+    command: celery -A settings worker --loglevel=info
     depends_on:
       - flowback-redis
     volumes:
@@ -70,6 +71,7 @@ services:
   flowback-celery-beat:
     image: kattenelvis1/flowback-backend:latest
     restart: unless-stopped
+    command: celery -A settings beat --loglevel=info
     depends_on:
       - flowback-redis
     volumes:
