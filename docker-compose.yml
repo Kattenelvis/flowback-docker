@@ -12,7 +12,7 @@ services:
     image: kattenelvis1/flowback-backend:latest
     restart: unless-stopped
     ports:
-      - ${PORT:-8000}:${PORT:-8000}
+      - ${PORT:-8005}:${PORT:-8000}
     volumes:
       - .:/app
     depends_on:
