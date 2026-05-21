@@ -1,6 +1,8 @@
 services:
   flowback-frontend:
     image: kattenelvis1/flowback-frontend:latest
+    environment:
+      PUBLIC_API_URL: https://immr.flowback.org/api
     depends_on:
       - flowback-backend
     deploy:
