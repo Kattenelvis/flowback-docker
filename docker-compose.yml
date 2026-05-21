@@ -91,6 +91,7 @@ services:
       - web
     depends_on:
       - flowback-frontend
+      - flowback-backend
 
 networks:
   web:
