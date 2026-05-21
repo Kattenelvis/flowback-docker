@@ -6,7 +6,7 @@ services:
     deploy:
       replicas: 4
     expose:
-      - 4000
+      - 3000
 
   flowback-backend:
     image: kattenelvis1/flowback-backend:latest
@@ -85,18 +85,14 @@ services:
   caddy:
     image: caddy:2-alpine
     ports:
-      - "127.0.0.1:8085:81"
+      - "443:443"
+      - "80:80"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
-    networks:
-      - web
     depends_on:
       - flowback-frontend
       - flowback-backend
-
-networks:
-  web:
 
 volumes:
   caddy_data:
