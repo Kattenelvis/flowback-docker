@@ -1,7 +1,13 @@
-Do this on Caddy running systemd
+```bash
+git clone https://github.com/Kattenelvis/flowback-docker/
+docker compose up -d
+```
+
+
+If you want too reverse proxy Do this on Caddy running systemd
 
 ```Caddyfile
-immr.flowback.org {
+flowback-example.com {
 reverse_proxy localhost:8085
 }
 ```
