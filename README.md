@@ -1,3 +1,8 @@
+# Flowback simple setup
+
+Here is a simple docker setup. 
+Requires git and docker. 
+
 ```bash
 git clone https://github.com/Kattenelvis/flowback-docker/
 docker compose up -d
