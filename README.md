@@ -5,6 +5,7 @@ Requires git and docker.
 
 ```bash
 git clone https://github.com/Kattenelvis/flowback-docker/
+cd flowback-docker
 docker compose up -d
 ```
 
