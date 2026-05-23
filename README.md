@@ -10,7 +10,7 @@ docker compose up -d
 ```
 
 
-If you want too reverse proxy Do this on Caddy running systemd
+If you want too reverse proxy Do this on Caddy running on systemd
 
 ```Caddyfile
 flowback-example.com {
