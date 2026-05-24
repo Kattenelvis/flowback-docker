@@ -7,6 +7,10 @@
         lb_policy round_robin
     }
 
+    reverse_proxy /static/admin/* flowback-backend:8000 {
+        lb_policy round_robin
+    }
+
     reverse_proxy /openid/* flowback-frontend:3000
 
     reverse_proxy flowback-frontend:3000 {
