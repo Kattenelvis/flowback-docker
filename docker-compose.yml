@@ -29,6 +29,7 @@ services:
       FLOWBACK_PSQL_PORT: ${POSTGRES_PORT:-5432}
       FLOWBACK_REDIS_HOST: ${REDIS_HOST:-flowback-redis}
       URL_SUBPATH: api
+      FLOWBACK_POLL_VERSION_LOCK: 2
     deploy:
       replicas: 4
 
