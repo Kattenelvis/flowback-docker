@@ -1,4 +1,21 @@
 :80 {
+    rate_limit {
+        zone login_limit {
+            match {
+                method POST
+                path /api/login
+            }
+            key {remote_host}
+            window 1m
+            events 5
+        }
+        zone general_limit {
+            key {remote_host}
+            window 1m
+            events 100
+        }
+    }
+
     reverse_proxy /api/* flowback-backend:8000 {
         lb_policy round_robin
     }

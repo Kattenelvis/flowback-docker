@@ -90,7 +90,9 @@ services:
       FLOWBACK_REDIS_HOST: ${REDIS_HOST:-flowback-redis}
 
   caddy:
-    image: caddy:2-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.caddy
     ports:
       - "127.0.0.1:8085:80"
     volumes:
