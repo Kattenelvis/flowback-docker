@@ -7,12 +7,12 @@
             }
             key {remote_host}
             window 1m
-            events 5
+            events 8
         }
         zone general_limit {
             key {remote_host}
             window 1m
-            events 100
+            events 10000
         }
     }
 
