@@ -2,7 +2,7 @@ services:
   flowback-frontend:
     image: kattenelvis1/flowback-frontend:latest
     environment:
-      PUBLIC_API_URL: localhost:8000/api
+      PUBLIC_API_URL: localhost:8085/api
       PUBLIC_POLL_VERSION: 2
     depends_on:
       - flowback-backend
