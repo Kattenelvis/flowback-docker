@@ -7,9 +7,9 @@ services:
     depends_on:
       - flowback-backend
     deploy:
-      replicas: 4
-    expose:
-      - 3000
+      replicas: 1
+    ports:
+      - 3000:4000
 
   flowback-backend:
     image: kattenelvis1/flowback-backend:latest
@@ -31,7 +31,7 @@ services:
       URL_SUBPATH: api
       FLOWBACK_POLL_VERSION_LOCK: 2
     deploy:
-      replicas: 4
+      replicas: 1
 
   flowback-postgresql:
     image: postgres:16.2

@@ -12,9 +12,9 @@
         lb_policy round_robin
     }
 
-    reverse_proxy /openid/* flowback-frontend:3000
+    reverse_proxy /openid/* flowback-frontend:4000
 
-    reverse_proxy flowback-frontend:3000 {
+    reverse_proxy flowback-frontend:4000 {
         lb_policy round_robin
     }
 }
