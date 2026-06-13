@@ -8,8 +8,8 @@ services:
       - flowback-backend
     deploy:
       replicas: 1
-    ports:
-      - 3000:4000
+    expose:
+      - 3000
 
   flowback-backend:
     image: kattenelvis1/flowback-backend:latest
