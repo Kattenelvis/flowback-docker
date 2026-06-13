@@ -31,6 +31,12 @@ services:
       FLOWBACK_REDIS_HOST: ${REDIS_HOST:-flowback-redis}
       URL_SUBPATH: api
       FLOWBACK_POLL_VERSION_LOCK: 2
+
+      # Remove in production, setup mail service
+      DEBUG: True
+      DISABLE_DEFAULT_USER_REGISTRATION: True
+      DEBUG_REGISTER_BYPASS_EMAIL_VERIFICATION: True
+
     deploy:
       replicas: 1
 
