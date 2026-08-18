@@ -4,6 +4,11 @@
         lb_policy round_robin
     }
 
+    reverse_proxy /media* flowback-backend:8000 {
+        rewrite /api{uri}
+        lb_policy round_robin
+    }
+
     reverse_proxy /admin* flowback-backend:8000 {
         lb_policy round_robin
     }

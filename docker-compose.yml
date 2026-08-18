@@ -1,6 +1,8 @@
 services:
   flowback-frontend:
-    image: kattenelvis1/flowback-frontend:latest
+    # image: kattenelvis1/flowback-frontend:latest
+    build:
+      context: '../flowback-frontend/'
     environment:
       PUBLIC_API_URL: http://localhost:8085/api
       PUBLIC_WEBSOCKET_API: ws://localhost:8085/api
@@ -13,12 +15,15 @@ services:
       - 3000
 
   flowback-backend:
-    image: kattenelvis1/flowback-backend:latest
+    build:
+      context: '../flowback-backend/'
     command: bash -c "python manage.py migrate && python manage.py runserver
       0.0.0.0:8000"
     restart: unless-stopped
     expose:
       - 8000
+    volumes:
+      - media_data:/app/media
     depends_on:
       flowback-postgresql:
         condition: service_healthy
@@ -71,7 +76,8 @@ services:
 
   flowback-celery-worker:
     restart: unless-stopped
-    image: kattenelvis1/flowback-backend:latest
+    build:
+      context: '../flowback-backend/'
     command: celery -A backend worker --loglevel=info
     depends_on:
       - flowback-redis
@@ -85,7 +91,8 @@ services:
       FLOWBACK_ENABLE_NEW_KPI_SYSTEM: ${FLOWBACK_ENABLE_NEW_KPI_SYSTEM:-True}
 
   flowback-celery-beat:
-    image: kattenelvis1/flowback-backend:latest
+    build:
+      context: '../flowback-backend/'
     restart: unless-stopped
     command: celery -A backend beat --loglevel=info
     depends_on:
@@ -112,6 +119,7 @@ services:
       - flowback-backend
 
 volumes:
+  media_data:
   caddy_data:
   postgres_data:
     driver: local
