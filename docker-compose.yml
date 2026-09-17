@@ -4,7 +4,7 @@ services:
     build:
       context: '../flowback-frontend/'
     environment:
-      PUBLIC_API_URL: http://localhost:8085/api
+      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8085/api}
       PUBLIC_WEBSOCKET_API: ws://localhost:8085/api
       PUBLIC_POLL_VERSION: 2
     depends_on:

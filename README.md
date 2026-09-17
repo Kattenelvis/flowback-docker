@@ -6,8 +6,11 @@ Requires git and docker.
 ```bash
 git clone https://github.com/Kattenelvis/flowback-docker/
 cd flowback-docker
+cp .env.example .env
 docker compose up -d
 ```
+
+Before starting the services, update `PUBLIC_API_URL` in `.env` for your environment if needed.
 
 Create a superuser to login with
 
