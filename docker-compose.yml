@@ -1,11 +1,11 @@
 services:
   flowback-frontend:
-    # image: kattenelvis1/flowback-frontend:latest
+    image: kattenelvis1/flowback-frontend:latest
     build:
       context: '../flowback-frontend/'
     environment:
       PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8085/api}
-      PUBLIC_WEBSOCKET_API: ws://localhost:8085/api
+      PUBLIC_WEBSOCKET_API: ${PUBLIC_API_URL:-ws://localhost:8085/api}
       PUBLIC_POLL_VERSION: 2
     depends_on:
       - flowback-backend
@@ -15,6 +15,7 @@ services:
       - 3000
 
   flowback-backend:
+    image: kattenelvis1/flowback-backend:latest
     build:
       context: '../flowback-backend/'
     command: bash -c "python manage.py migrate && python manage.py runserver
@@ -37,7 +38,8 @@ services:
       URL_SUBPATH: api
       FLOWBACK_POLL_VERSION_LOCK: 2
       FLOWBACK_ENABLE_NEW_KPI_SYSTEM: ${FLOWBACK_ENABLE_NEW_KPI_SYSTEM:-True}
-      SECURE_PROXY_SSL_HEADERS: ${SECURE_PROXY_SSL_HEADERS:-True}
+      SECURE_PROXY_SSL_HEADERS: True
+
       # Remove in production, setup mail service
       DEBUG: True
       DISABLE_DEFAULT_USER_REGISTRATION: True
