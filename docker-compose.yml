@@ -37,7 +37,7 @@ services:
       URL_SUBPATH: api
       FLOWBACK_POLL_VERSION_LOCK: 2
       FLOWBACK_ENABLE_NEW_KPI_SYSTEM: ${FLOWBACK_ENABLE_NEW_KPI_SYSTEM:-True}
-
+      SECURE_PROXY_SSL_HEADERS: ${SECURE_PROXY_SSL_HEADERS:-True}
       # Remove in production, setup mail service
       DEBUG: True
       DISABLE_DEFAULT_USER_REGISTRATION: True
