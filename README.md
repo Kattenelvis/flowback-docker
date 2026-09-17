@@ -1,28 +1,33 @@
 # Flowback simple setup
 
-Here is a simple docker setup.
-Requires git and docker.
+Requires Git and Docker.
 
 ```bash
 git clone https://github.com/Kattenelvis/flowback-docker/
 cd flowback-docker
 cp .env.example .env
-docker compose up -d
+# Pull and start the published images
+docker compose pull flowback-frontend flowback-backend flowback-postgresql flowback-redis
+docker compose up -d --no-build flowback-frontend flowback-backend flowback-postgresql flowback-redis
+
+# Build and start Caddy
+docker compose build caddy
+docker compose up -d --no-build caddy
 ```
 
-Before starting the services, update `PUBLIC_API_URL` in `.env` for your environment if needed.
+Update `PUBLIC_API_URL` in `.env` before starting if needed.
 
-Create a superuser to login with
+Create a superuser:
 
 ```bash
 chmod +x ./create_superuser.bash
 bash ./create_superuser.bash
 ```
 
-If you want too reverse proxy Do this on Caddy running on systemd
+For a Caddy reverse proxy running on the host:
 
-```Caddyfile
+```caddyfile
 flowback-example.com {
-reverse_proxy localhost:8085
+    reverse_proxy localhost:8085
 }
 ```

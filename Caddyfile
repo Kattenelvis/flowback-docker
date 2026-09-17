@@ -2,19 +2,23 @@
 
     reverse_proxy /api* flowback-backend:8000 {
         lb_policy round_robin
+        header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
     }
 
     reverse_proxy /media* flowback-backend:8000 {
         rewrite /api{uri}
         lb_policy round_robin
+        header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
     }
 
     reverse_proxy /admin* flowback-backend:8000 {
         lb_policy round_robin
+        header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
     }
 
     reverse_proxy /static/admin* flowback-backend:8000 {
         lb_policy round_robin
+        header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
     }
 
     reverse_proxy /openid* flowback-frontend:3000
