@@ -16,7 +16,7 @@ services:
       - 3000
 
   flowback-backend:
-    image: kattenelvis1/flowback-backend:latest
+    image: kattenelvis1/flowback-backend:${BACKEND_TAG:-latest}
     build:
       context: '../flowback-backend/'
     command: bash -c "python manage.py migrate && python manage.py runserver
