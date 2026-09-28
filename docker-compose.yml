@@ -1,6 +1,6 @@
 services:
   flowback-frontend:
-    image: kattenelvis1/flowback-frontend:latest
+    image: kattenelvis1/flowback-frontend:${FRONTEND_TAG:-latest}
     build:
       context: '../flowback-frontend/'
     environment:
