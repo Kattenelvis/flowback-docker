@@ -15,7 +15,7 @@ docker compose build caddy
 docker compose up -d --no-build caddy
 ```
 
-Update `PUBLIC_API_URL` in `.env` before starting if needed.
+Update `PUBLIC_API_URL` in `.env` before starting if needed. Set `PUBLIC_PRIVACY_MAIL` to the address users should contact for GDPR data access and account deletion requests.
 
 Create a superuser:
 

@@ -7,6 +7,7 @@ services:
       PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8085/api}
       PUBLIC_WEBSOCKET_API: ${PUBLIC_API_URL:-ws://localhost:8085/api}
       PUBLIC_POLL_VERSION: 2
+      PUBLIC_PRIVACY_MAIL: ${PUBLIC_PRIVACY_MAIL:-}
     depends_on:
       - flowback-backend
     deploy:
