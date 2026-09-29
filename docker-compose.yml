@@ -41,6 +41,12 @@ services:
       FLOWBACK_ENABLE_NEW_KPI_SYSTEM: ${FLOWBACK_ENABLE_NEW_KPI_SYSTEM:-True}
       SECURE_PROXY_SSL_HEADERS: True
 
+      # SMTP; leave EMAIL_HOST empty to print verification codes to the console
+      EMAIL_HOST: ${EMAIL_HOST:-}
+      EMAIL_PORT: ${EMAIL_PORT:-587}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
+
       # Remove in production, setup mail service
       DEBUG: True
       DISABLE_DEFAULT_USER_REGISTRATION: True
