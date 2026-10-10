@@ -122,7 +122,7 @@ services:
       context: .
       dockerfile: Dockerfile.caddy
     ports:
-      - "127.0.0.1:8085:80"
+      - "127.0.0.1:${CADDY_PORT:-8085}:80"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data

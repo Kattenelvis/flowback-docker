@@ -15,7 +15,7 @@ docker compose build caddy
 docker compose up -d --no-build caddy
 ```
 
-Update `PUBLIC_API_URL` in `.env` before starting if needed. Set `PUBLIC_PRIVACY_MAIL` to the address users should contact for GDPR data access and account deletion requests.
+Update `PUBLIC_API_URL` in `.env` before starting if needed. Caddy listens on `127.0.0.1:8085`; set `CADDY_PORT` to run several instances on one host. Set `PUBLIC_PRIVACY_MAIL` to the address users should contact for GDPR data access and account deletion requests.
 
 To send verification and password reset mail, set `EMAIL_HOST`, `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` (port 465 with SSL by default; for STARTTLS set `EMAIL_PORT=587` and `EMAIL_USE_SSL=False`. For Namecheap Private Email the host is `mail.privateemail.com`). Without them the codes are printed to the backend log. Set `URL_USER_CREATE` to the frontend's `/login/create` URL (e.g. `https://flowback.example.com/login/create`) to send a verification link instead of a bare code.
 
