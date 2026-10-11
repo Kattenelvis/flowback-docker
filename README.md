@@ -6,14 +6,10 @@ Requires Git and Docker.
 git clone https://github.com/Kattenelvis/flowback-docker/
 cd flowback-docker
 cp .env.example .env
-# Pull and start the published images
-docker compose pull flowback-frontend flowback-backend flowback-postgresql flowback-redis
-docker compose up -d --no-build flowback-frontend flowback-backend flowback-postgresql flowback-redis
-
-# Build and start Caddy
-docker compose build caddy
-docker compose up -d --no-build caddy
+docker compose up -d --pull always
 ```
+
+Run the same command to update to the latest published images.
 
 Update `PUBLIC_API_URL` in `.env` before starting if needed. Caddy listens on `127.0.0.1:8085`; set `CADDY_PORT` to run several instances on one host. Set `PUBLIC_PRIVACY_MAIL` to the address users should contact for GDPR data access and account deletion requests.
 

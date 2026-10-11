@@ -87,6 +87,7 @@ services:
     #      - "6379:6379"
 
   flowback-celery-worker:
+    image: kattenelvis1/flowback-backend:${BACKEND_TAG:-latest}
     restart: unless-stopped
     build:
       context: '../flowback-backend/'
@@ -103,6 +104,7 @@ services:
       FLOWBACK_ENABLE_NEW_KPI_SYSTEM: ${FLOWBACK_ENABLE_NEW_KPI_SYSTEM:-True}
 
   flowback-celery-beat:
+    image: kattenelvis1/flowback-backend:${BACKEND_TAG:-latest}
     build:
       context: '../flowback-backend/'
     restart: unless-stopped
@@ -118,9 +120,7 @@ services:
       FLOWBACK_REDIS_HOST: ${REDIS_HOST:-flowback-redis}
 
   caddy:
-    build:
-      context: .
-      dockerfile: Dockerfile.caddy
+    image: caddy:2-alpine
     ports:
       - "127.0.0.1:${CADDY_PORT:-8085}:80"
     volumes:
