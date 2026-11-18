@@ -17,6 +17,8 @@ To send verification and password reset mail, set `EMAIL_HOST`, `EMAIL_HOST_USER
 
 Set `FLOWBACK_LEDGER_MODULE=TRUE` in `.env` to enable the optional ledger module (accounts and transactions) in both the backend and the frontend. It is off by default.
 
+To let only superusers and staff create groups, set `FLOWBACK_ALLOW_GROUP_CREATION=FALSE` and `PUBLIC_DISABLE_GROUP_CREATION=TRUE` in `.env`. The first makes the backend refuse everyone else, the second hides the Create Group button in the frontend. Set both, or users see a button that fails.
+
 Create a superuser:
 
 ```bash
